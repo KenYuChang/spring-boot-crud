@@ -27,4 +27,9 @@ public class ApiController {
         this.customer = customer;
         return "Customer updated";
     }
+    @DeleteMapping("{customerId}")
+    public String deleteCustomerDetails(String customerId) {
+        this.customer = null;
+        return "Customer deleted";
+    }
 }
