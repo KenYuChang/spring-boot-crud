@@ -1,13 +1,12 @@
 package com.apidemo.spcruddemo.Controller;
 import com.apidemo.spcruddemo.Models.Customer;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
 public class ApiController {
 
+    Customer customer;
     @GetMapping("")
     public String getPage() {
         return "Hello World";
@@ -15,7 +14,13 @@ public class ApiController {
 
     @GetMapping("{customerId}")
     public Customer getCustomerDetails(String customerId) {
-        return new Customer("C1",
-                "Ken", "Taipei", "0952789345");
+        return customer;
     }
+
+    @PostMapping
+    public String createCustomerDetails(@RequestBody Customer customer) {
+        this.customer = customer;
+        return "Customer created";
+    }
+
 }
