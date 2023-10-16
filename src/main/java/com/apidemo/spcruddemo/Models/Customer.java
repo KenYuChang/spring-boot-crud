@@ -1,6 +1,13 @@
 package com.apidemo.spcruddemo.Models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="customer_info")
 public class Customer {
+    @Id
     private String customerId;
     private String customerName;
     private String customerAddress;
