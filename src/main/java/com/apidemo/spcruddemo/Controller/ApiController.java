@@ -15,7 +15,7 @@ public class ApiController {
         this.customerService = customerService;
     }
 
-    @GetMapping("")
+    @GetMapping("/page")
     public String getPage() {
         return "Hello World";
     }
@@ -31,7 +31,6 @@ public class ApiController {
 
     @PostMapping
     public String createCustomerDetails(@RequestBody Customer customer) {
-
         customerService.createCustomer(customer);
         return "Customer created";
     }
