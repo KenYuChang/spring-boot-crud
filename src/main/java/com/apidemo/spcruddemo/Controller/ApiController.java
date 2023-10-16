@@ -22,5 +22,9 @@ public class ApiController {
         this.customer = customer;
         return "Customer created";
     }
-
+    @PutMapping
+    public String updateCustomerDetails(@RequestBody Customer customer) {
+        this.customer = customer;
+        return "Customer updated";
+    }
 }
