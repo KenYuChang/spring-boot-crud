@@ -3,9 +3,10 @@ package com.apidemo.spcruddemo.Service.impl;
 import com.apidemo.spcruddemo.Models.Customer;
 import com.apidemo.spcruddemo.Respository.CustomerRepository;
 import com.apidemo.spcruddemo.Service.CustomerService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
     CustomerRepository customerRepository;

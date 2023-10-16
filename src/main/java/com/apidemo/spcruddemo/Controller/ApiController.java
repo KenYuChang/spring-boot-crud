@@ -1,35 +1,48 @@
 package com.apidemo.spcruddemo.Controller;
 import com.apidemo.spcruddemo.Models.Customer;
+import com.apidemo.spcruddemo.Service.CustomerService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
 public class ApiController {
 
-    Customer customer;
+    CustomerService customerService;
+
+    public ApiController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @GetMapping("")
     public String getPage() {
         return "Hello World";
     }
 
     @GetMapping("{customerId}")
-    public Customer getCustomerDetails(String customerId) {
-        return customer;
+    public Customer getCustomerDetails(@PathVariable("customerId") String customerId) {
+        return customerService.getCustomer(customerId);
+    }
+    @GetMapping()
+    public List<Customer> getAllCustomerDetails() {
+        return customerService.getAllCustomers();
     }
 
     @PostMapping
     public String createCustomerDetails(@RequestBody Customer customer) {
-        this.customer = customer;
+
+        customerService.createCustomer(customer);
         return "Customer created";
     }
     @PutMapping
     public String updateCustomerDetails(@RequestBody Customer customer) {
-        this.customer = customer;
+        customerService.updateCustomer(customer);
         return "Customer updated";
     }
     @DeleteMapping("{customerId}")
-    public String deleteCustomerDetails(String customerId) {
-        this.customer = null;
+    public String deleteCustomerDetails(@PathVariable("customerId") String customerId) {
+        customerService.deleteCustomer(customerId);
         return "Customer deleted";
     }
 }
